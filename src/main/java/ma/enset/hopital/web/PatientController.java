@@ -16,7 +16,7 @@ public class PatientController {
     @GetMapping("/index")
     public String index(Model model) {
         List<Patient> patientList = patientRepository.findAll();
-        model.addAttribute("istPatients", patientList);
+        model.addAttribute("listPatients", patientList);
         return "patients";
     }
 }
