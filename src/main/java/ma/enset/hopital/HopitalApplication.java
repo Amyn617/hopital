@@ -23,25 +23,25 @@ public class HopitalApplication implements CommandLineRunner {
         patientRepository.save(
                 Patient.builder()
                         .nom("Mohammed")
-                        .dateNaissance(new Date())
+                        .dateNaissance(new Date(System.currentTimeMillis() - 1000L * 60 * 60 * 24 * 365 * 30))
                         .malade(false)
-                        .score(34)
+                        .score(715)
                         .build()
         );
         patientRepository.save(
                 Patient.builder()
                         .nom("Hanane")
-                        .dateNaissance(new Date())
-                        .malade(false)
-                        .score(4321)
+                        .dateNaissance(new Date(System.currentTimeMillis() - 1000L * 60 * 60 * 24 * 365 * 25))
+                        .malade(true)
+                        .score(812)
                         .build()
         );
         patientRepository.save(
                 Patient.builder()
                         .nom("Imane")
-                        .dateNaissance(new Date())
+                        .dateNaissance(new Date(System.currentTimeMillis() - 1000L * 60 * 60 * 24 * 365 * 20))
                         .malade(false)
-                        .score(34)
+                        .score(625)
                         .build()
         );
     }
