@@ -3,6 +3,7 @@
   xmlns:th="http://www.thymeleaf.org"
   xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
   layout:decorate="~{template1}"
+  lang="fr"
 >
   <head>
     <meta charset="UTF-8" />
@@ -10,60 +11,110 @@
   </head>
   <body>
     <div layout:fragment="content1">
-      <div class="col-md-6 offset-3">
-        <div class="card">
-          <div
-            class="card-header"
-            th:text="${patient.id != null ? 'Edit Patient' : 'Nouveau Patient'}"
-          ></div>
-          <div class="card-body">
-            <form method="post" th:action="@{save}" th:object="${patient}">
-              <input type="hidden" th:field="*{id}" />
-              <div class="mb-3">
-                <label class="form-label">Nom</label>
-                <input
-                  class="form-control"
-                  type="text"
-                  th:field="*{nom}"
-                  th:classappend="${#fields.hasErrors('nom')} ? 'is-invalid' : ''"
-                />
-                <div class="invalid-feedback" th:errors="*{nom}"></div>
-              </div>
-              <div class="mb-3">
-                <label class="form-label">Date de naissance</label>
-                <input
-                  class="form-control"
-                  type="date"
-                  th:field="*{dateNaissance}"
-                  th:classappend="${#fields.hasErrors('dateNaissance')} ? 'is-invalid' : ''"
-                />
-                <div
-                  class="invalid-feedback"
-                  th:errors="*{dateNaissance}"
-                ></div>
-              </div>
-              <div class="mb-3 form-check">
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  th:field="*{malade}"
-                />
-                <label class="form-check-label">Malade</label>
-              </div>
-              <div class="mb-3">
-                <label class="form-label">Score</label>
-                <input
-                  class="form-control"
-                  type="number"
-                  th:field="*{score}"
-                  th:classappend="${#fields.hasErrors('score')} ? 'is-invalid' : ''"
-                />
-                <div class="invalid-feedback" th:errors="*{score}"></div>
-              </div>
-              <button type="submit" class="btn btn-primary">
-                <i class="bi bi-save"></i> Enregistrer
-              </button>
-            </form>
+      <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+          <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+              <h5 class="card-title mb-0">
+                <i class="bi bi-person-plus me-2"></i>
+                <span
+                  th:text="${patient.id != null ? 'Modifier Patient' : 'Nouveau Patient'}"
+                ></span>
+              </h5>
+            </div>
+            <div class="card-body">
+              <form
+                method="post"
+                th:action="@{save}"
+                th:object="${patient}"
+                class="needs-validation"
+              >
+                <input type="hidden" th:field="*{id}" />
+
+                <div class="mb-4">
+                  <label class="form-label fw-bold"
+                    >Nom <span class="text-danger">*</span></label
+                  >
+                  <div class="input-group">
+                    <span class="input-group-text"
+                      ><i class="bi bi-person"></i
+                    ></span>
+                    <input
+                      class="form-control"
+                      type="text"
+                      th:field="*{nom}"
+                      th:classappend="${#fields.hasErrors('nom')} ? 'is-invalid' : ''"
+                    />
+                  </div>
+                  <div class="invalid-feedback" th:errors="*{nom}"></div>
+                </div>
+
+                <div class="mb-4">
+                  <label class="form-label fw-bold"
+                    >Date de naissance <span class="text-danger">*</span></label
+                  >
+                  <div class="input-group">
+                    <span class="input-group-text"
+                      ><i class="bi bi-calendar"></i
+                    ></span>
+                    <input
+                      class="form-control"
+                      type="date"
+                      th:field="*{dateNaissance}"
+                      th:classappend="${#fields.hasErrors('dateNaissance')} ? 'is-invalid' : ''"
+                    />
+                  </div>
+                  <div
+                    class="invalid-feedback"
+                    th:errors="*{dateNaissance}"
+                  ></div>
+                </div>
+
+                <div class="mb-4">
+                  <div class="form-check form-switch">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      th:field="*{malade}"
+                      role="switch"
+                    />
+                    <label class="form-check-label fw-bold"
+                      >État de santé</label
+                    >
+                  </div>
+                  <small class="text-muted"
+                    >Activez si le patient est malade</small
+                  >
+                </div>
+
+                <div class="mb-4">
+                  <label class="form-label fw-bold"
+                    >Score <span class="text-danger">*</span></label
+                  >
+                  <div class="input-group">
+                    <span class="input-group-text"
+                      ><i class="bi bi-graph-up"></i
+                    ></span>
+                    <input
+                      class="form-control"
+                      type="number"
+                      th:field="*{score}"
+                      th:classappend="${#fields.hasErrors('score')} ? 'is-invalid' : ''"
+                    />
+                  </div>
+                  <div class="invalid-feedback" th:errors="*{score}"></div>
+                </div>
+
+                <div class="d-grid gap-2">
+                  <button type="submit" class="btn btn-primary">
+                    <i class="bi bi-save me-2"></i>Enregistrer
+                  </button>
+                  <a th:href="@{/index}" class="btn btn-outline-secondary">
+                    <i class="bi bi-arrow-left me-2"></i>Retour
+                  </a>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </div>

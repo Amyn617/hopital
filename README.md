@@ -1,24 +1,26 @@
-# Application de Gestion des Patients
+# 🏥 Application de Gestion des Patients
 
 Cette application web JEE est basée sur Spring MVC, Thymeleaf et Spring Data JPA. Elle permet de gérer efficacement les informations des patients avec diverses fonctionnalités.
 
-## Fonctionnalités principales
+# 📋 Partie 1
 
-- Affichage de la liste des patients
-- Pagination des résultats
-- Recherche des patients par nom
-- Suppression d'un patient
-- Ajout de nouveaux patients
+## ⭐ Fonctionnalités principales
 
-## Technologies utilisées
+- 📊 Affichage de la liste des patients
+- 📑 Pagination des résultats
+- 🔍 Recherche des patients par nom
+- 🗑️ Suppression d'un patient
+- ➕ Ajout de nouveaux patients
 
-- Spring Boot
-- Spring MVC
-- Spring Data JPA
-- Thymeleaf
-- Bootstrap 5
-- Base de données : H2 (développement) et MySQL (production)
-- Maven
+## 🛠️ Technologies utilisées
+
+- 🔧 Spring Boot
+- 🌐 Spring MVC
+- 💾 Spring Data JPA
+- 🎨 Thymeleaf
+- 📱 Bootstrap 5
+- 🗄️ Base de données : H2 (développement) et MySQL (production)
+- 📦 Maven
 
 ## Configuration et déploiement
 
@@ -33,8 +35,6 @@ http://localhost:8084/h2-console
 ![image](https://github.com/user-attachments/assets/d48ccdc6-4ce7-45bf-8aef-f9914ffe60fa)
 
 ![image](https://github.com/user-attachments/assets/803155b2-4d5e-4c33-99cb-3550f7424dba)
-
-
 
 Configuration dans `application.properties` :
 
@@ -79,6 +79,7 @@ L'interface d'affichage des patients utilise Thymeleaf pour le rendu HTML côté
 ![image](https://github.com/user-attachments/assets/e6a7c564-a6f5-4ede-b375-05a77a66ef81)
 
 L'application utilise Bootstrap 5 pour une interface responsive et moderne :
+
 - Navigation intuitive
 - Tableaux stylisés
 - Formulaires élégants
@@ -89,6 +90,7 @@ L'application utilise Bootstrap 5 pour une interface responsive et moderne :
 ![image](https://github.com/user-attachments/assets/19342b82-c7c2-4a8f-af8b-fa05df28d841)
 
 La pagination est implémentée avec :
+
 - Contrôle du nombre d'éléments par page
 - Navigation entre les pages
 - Affichage du nombre total de pages
@@ -98,6 +100,7 @@ La pagination est implémentée avec :
 ![image](https://github.com/user-attachments/assets/180126cf-28cf-4b27-bba5-293e100029e7)
 
 Un formulaire de recherche permet de filtrer les patients par nom :
+
 - Recherche en temps réel
 - Résultats paginés
 
@@ -106,35 +109,83 @@ Un formulaire de recherche permet de filtrer les patients par nom :
 ![image](https://github.com/user-attachments/assets/3d9b78eb-a053-42da-b813-2f44b7e109e9)
 
 La fonctionnalité de suppression inclut :
+
 - Bouton de suppression pour chaque patient
 - Confirmation avant suppression
 - Notification après suppression réussie
 
-## Structure du projet
+# 🔧 Partie 2: Templates et Validation
+
+## 📝 Création du Template Layout
+
+Un template global a été créé pour maintenir une cohérence visuelle à travers l'application :
+
+- 📱 Navigation responsive avec Bootstrap
+- 📑 Menu déroulant pour les actions patients
+- 🎨 Zone de contenu dynamique avec Thymeleaf Layout Dialect
+- 🎯 Support pour les icônes Bootstrap
+
+## ✅ Validation des Formulaires
+
+### 🔒 Validation Côté Serveur
+
+Les données patient sont validées avec Jakarta Validation :
+
+- 📝 Nom : 4-40 caractères, obligatoire
+- 📅 Date de naissance : obligatoire, date passée
+- 📊 Score : minimum 100
+- 🏥 Statut santé : booléen
+
+### 💡 Retour Utilisateur
+
+- ⚠️ Messages d'erreur personnalisés
+- 🎯 Indication visuelle des champs invalides
+- 💾 Conservation des données en cas d'erreur
+
+## 🔍 Fonctionnalités Détaillées
+
+### 👥 Gestion des Patients
+
+- 📋 Liste paginée avec recherche dynamique
+- 📝 Formulaire de création/modification avec validation
+- 🗑️ Confirmation de suppression
+- 🏥 Indicateurs visuels de l'état de santé
+- 📊 Barre de progression pour les scores
+
+### 🎨 Navigation et Interface
+
+- 📱 Barre de navigation responsive
+- 📑 Menu déroulant pour les actions
+- 📄 Pagination avec contrôles intuitifs
+- 💬 Messages de feedback utilisateur
+- 🎯 Design moderne avec Bootstrap 5
+
+### 🔒 Sécurité et Validation
+
+- ✅ Validation des entrées côté serveur
+- ⚠️ Messages d'erreur personnalisés
+- 🛡️ Protection contre les données invalides
+- 🔔 Confirmation des actions critiques
+
+## 📁 Structure du Projet
 
 ```
 src/
-├── main/
-│   ├── java/
-│   │   └── ma/
-│   │       └── enset/
-│   │           └── hopital/
-│   │               ├── entities/
-│   │               │   └── Patient.java
-│   │               ├── repositories/
-│   │               │   └── PatientRepository.java
-│   │               ├── web/
-│   │               │   └── PatientController.java
-│   │               └── HopitalApplication.java
-│   └── resources/
-│       ├── static/
-│       ├── templates/
-│       │   └── patients.html
-│       └── application.properties
-└── test/
-    └── java/
-        └── ma/
-            └── enset/
-                └── hopital/
-                    └── HopitalApplicationTests.java
+├── 📂 main/
+│   ├── 📂 java/ma/enset/hopital/
+│   │   ├── 📂 entities/
+│   │   │   └── 📄 Patient.java         # Entité JPA avec validations
+│   │   ├── 📂 repository/
+│   │   │   └── 📄 PatientRepository.java # Interface Repository
+│   │   ├── 📂 web/
+│   │   │   └── 📄 PatientController.java # Contrôleur MVC
+│   │   └── 📄 HopitalApplication.java   # Class principale
+│   └── 📂 resources/
+│       ├── 📂 templates/
+│       │   ├── 📄 template1.html        # Template layout principal
+│       │   ├── 📄 patients.html         # Liste des patients
+│       │   └── 📄 formPatients.html     # Formulaire patient
+│       ├── 📂 static/
+│       │   └── 📂 css/                  # Styles personnalisés
+│       └── 📄 application.properties    # Configuration
 ```
