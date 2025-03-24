@@ -1,40 +1,52 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://thymeleaf.org"
-xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<html
+  lang="en"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  xsi:schemaLocation="http://www.ultraq.net.nz/thymeleaf/layout
+                          http://www.ultraq.net.nz/thymeleaf/layout/layout-1.5.xsd"
+>
   <head>
     <meta charset="UTF-8" />
-    <title>Title</title>
+    <title>Hospital Management</title>
     <link
-      href="/webjar/bootstrap/5.3.3/css/bootstrap.min.css"
       rel="stylesheet"
+      href="/webjars/bootstrap/5.3.3/css/bootstrap.min.css"
     />
-    <script src="/webjar/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="/webjars/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css"
+    />
   </head>
   <body>
-    <!-- Grey with black text -->
-    <nav class="navbar navbar-expand-sm bg-light navbar-light">
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
       <div class="container-fluid">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link active" href="#">Active</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Dropdown</a>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Link</a></li>
-                    <li><a class="dropdown-item" href="#">Another link</a></li>
-                    <li><a class="dropdown-item" href="#">A third link</a></li>
-                </ul>
+        <a class="navbar-brand" href="#">Hospital</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" th:href="@{/index}">Patients</a>
             </li>
-        </ul>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Add Patient</a>
+            </li>
+          </ul>
+        </div>
       </div>
     </nav>
-  <section layout:fragment="content1"></section>
+
+    <div class="container mt-3">
+      <div layout:fragment="content1"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
