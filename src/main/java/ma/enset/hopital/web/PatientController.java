@@ -17,6 +17,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 @AllArgsConstructor
 public class PatientController {
     private PatientRepository patientRepository;
+
+    @GetMapping("")
+    public String home() {
+        return "redirect:/index";
+    }
+
     @GetMapping("/index")
     public String index(Model model, 
                        @RequestParam(name = "page", defaultValue = "0") int page,
@@ -49,6 +55,7 @@ public class PatientController {
         model.addAttribute("keyword", keyword);
         return "formPatients";
     }
+
 
     @GetMapping("/editPatient")
     public String editPatient(@RequestParam(name = "id") Long id, Model model,
