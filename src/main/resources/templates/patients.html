@@ -72,6 +72,7 @@
                   </td>
                   <td>
                     <div class="progress" style="height: 20px">
+                    <div class="progress" style="height: 20px">
                       <div
                         class="progress-bar"
                         role="progressbar"
@@ -89,13 +90,16 @@
                         <i class="bi bi-pencil"></i>
                       </a>
                       <button
-                        class="btn btn-outline-danger"
-                        onclick="deletePatient(this)"
-                        th:data-id="${p.id}"
-                        th:data-name="${p.nom}"
+                              class="btn btn-outline-danger"
+                              onclick="deletePatient(this)"
+                              th:data-id="${p.id}"
+                              th:data-name="${p.nom}"
+                              th:data-keyword="${keyword}"
+                              th:data-page="${currentPage}"
                       >
                         <i class="bi bi-trash"></i>
                       </button>
+
                     </div>
                   </td>
                 </tr>
@@ -146,13 +150,14 @@
         function deletePatient(button) {
           const id = button.getAttribute("data-id");
           const name = button.getAttribute("data-name");
-          if (
-            confirm(`Êtes-vous sûr de vouloir supprimer le patient "${name}" ?`)
-          ) {
-            window.location.href = `/delete?id=${id}&keyword=${keyword}&page=${currentPage}`;
+
+          if (confirm(`Êtes-vous sûr de vouloir supprimer le patient "${name}" ?`)) {
+            window.location.href = `/delete?id=${id}`;
           }
         }
       </script>
+
+
     </div>
   </body>
 </html>

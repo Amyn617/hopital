@@ -41,8 +41,12 @@ public class PatientController {
         return "redirect:/index?page=" + page + "&keyword=" + keyword;
     }
     @GetMapping("/formPatients")
-    public String formPatients(Model model){
+    public String formPatients(Model model,
+                             @RequestParam(name = "page", defaultValue = "0") int page,
+                             @RequestParam(name = "keyword", defaultValue = "") String keyword) {
         model.addAttribute("patient", new Patient());
+        model.addAttribute("page", page);
+        model.addAttribute("keyword", keyword);
         return "formPatients";
     }
 

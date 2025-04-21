@@ -29,6 +29,9 @@
                 th:object="${patient}"
                 class="needs-validation"
               >
+                <!-- Add hidden fields for pagination and search -->
+                <input type="hidden" name="page" th:value="${page}" />
+                <input type="hidden" name="keyword" th:value="${keyword}" />
                 <input type="hidden" th:field="*{id}" />
 
                 <div class="mb-4">
@@ -43,10 +46,10 @@
                       class="form-control"
                       type="text"
                       th:field="*{nom}"
-                      th:classappend="${#fields.hasErrors('nom')} ? 'is-invalid' : ''"
+                      th:errorclass="is-invalid"
                     />
                   </div>
-                  <div class="invalid-feedback" th:errors="*{nom}"></div>
+                  <span class="text-danger" th:errors="*{nom}"></span>
                 </div>
 
                 <div class="mb-4">
@@ -61,13 +64,10 @@
                       class="form-control"
                       type="date"
                       th:field="*{dateNaissance}"
-                      th:classappend="${#fields.hasErrors('dateNaissance')} ? 'is-invalid' : ''"
+                      th:errorclass="is-invalid"
                     />
                   </div>
-                  <div
-                    class="invalid-feedback"
-                    th:errors="*{dateNaissance}"
-                  ></div>
+                  <span class="text-danger" th:errors="*{dateNaissance}"></span>
                 </div>
 
                 <div class="mb-4">
@@ -99,10 +99,10 @@
                       class="form-control"
                       type="number"
                       th:field="*{score}"
-                      th:classappend="${#fields.hasErrors('score')} ? 'is-invalid' : ''"
+                      th:errorclass="is-invalid"
                     />
                   </div>
-                  <div class="invalid-feedback" th:errors="*{score}"></div>
+                  <span class="text-danger" th:errors="*{score}"></span>
                 </div>
 
                 <div class="d-grid gap-2">
