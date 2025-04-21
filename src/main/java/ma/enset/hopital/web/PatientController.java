@@ -18,12 +18,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class PatientController {
     private PatientRepository patientRepository;
 
-    @GetMapping("")
-    public String home() {
-        return "redirect:/index";
-    }
 
-    @GetMapping("/index")
+    @GetMapping("/user/index")
     public String index(Model model, 
                        @RequestParam(name = "page", defaultValue = "0") int page,
                        @RequestParam(name = "size", defaultValue = "5") int size,
@@ -39,14 +35,14 @@ public class PatientController {
         return "patients";
     }
 
-    @GetMapping("/delete")
+    @GetMapping("/admin/delete")
     public String delete(@RequestParam(name = "id") Long id,
                         @RequestParam(name = "keyword", defaultValue = "") String keyword,
                         @RequestParam(name = "page", defaultValue = "0") int page) {
         patientRepository.deleteById(id);
-        return "redirect:/index?page=" + page + "&keyword=" + keyword;
+        return "redirect:/user/index?page=" + page + "&keyword=" + keyword;
     }
-    @GetMapping("/formPatients")
+    @GetMapping("/admin/formPatients")
     public String formPatients(Model model,
                              @RequestParam(name = "page", defaultValue = "0") int page,
                              @RequestParam(name = "keyword", defaultValue = "") String keyword) {
@@ -57,7 +53,7 @@ public class PatientController {
     }
 
 
-    @GetMapping("/editPatient")
+    @GetMapping("/admin/editPatient")
     public String editPatient(@RequestParam(name = "id") Long id, Model model,
                             @RequestParam(name = "keyword", defaultValue = "") String keyword,
                             @RequestParam(name = "page", defaultValue = "0") int page) {
@@ -69,12 +65,19 @@ public class PatientController {
         return "formPatients";
     }
 
-    @PostMapping(path="/save")
+    @PostMapping(path="/admin/save")
     public String save(Model model, @Valid Patient patient, BindingResult bindingResult,
                       @RequestParam(name = "keyword", defaultValue = "") String keyword,
                       @RequestParam(name = "page", defaultValue = "0") int page) {
         if (bindingResult.hasErrors()) return "formPatients";
         patientRepository.save(patient);
-        return "redirect:/index?page=" + page + "&keyword=" + keyword;
+        return "redirect:/user/index?page=" + page + "&keyword=" + keyword;
     }
+
+    @GetMapping("")
+    public String home() {
+        return "redirect:/user/index";
+    }
+
+
 }

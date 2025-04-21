@@ -15,12 +15,12 @@
           class="card-header bg-light d-flex justify-content-between align-items-center"
         >
           <h5 class="card-title mb-0">Liste des patients</h5>
-          <a th:href="@{/formPatients}" class="btn btn-primary">
+          <a th:href="@{/admin/formPatients}" class="btn btn-primary" th:if="${#authorization.expression('hasRole(''ADMIN'')')}">
             <i class="bi bi-plus-circle"></i> Nouveau Patient
           </a>
         </div>
         <div class="card-body">
-          <form method="get" th:action="@{/index}" class="mb-4">
+          <form method="get" th:action="@{/admin/index}" class="mb-4">
             <div class="input-group">
               <span class="input-group-text"><i class="bi bi-search"></i></span>
               <input
@@ -44,7 +44,7 @@
                   <th>Date Naissance</th>
                   <th>Status</th>
                   <th>Score</th>
-                  <th>Actions</th>
+                  <th th:if="${#authorization.expression('hasRole(''ADMIN'')')}">Actions</th>
                 </tr>
               </thead>
               <tbody>
@@ -72,7 +72,6 @@
                   </td>
                   <td>
                     <div class="progress" style="height: 20px">
-                    <div class="progress" style="height: 20px">
                       <div
                         class="progress-bar"
                         role="progressbar"
@@ -81,11 +80,11 @@
                       ></div>
                     </div>
                   </td>
-                  <td>
+                  <td th:if="${#authorization.expression('hasRole(''ADMIN'')')}">
                     <div class="btn-group btn-group-sm">
                       <a
                         class="btn btn-outline-primary"
-                        th:href="@{/editPatient(id=${p.id}, keyword=${keyword}, page=${currentPage})}"
+                        th:href="@{/admin/editPatient(id=${p.id}, keyword=${keyword}, page=${currentPage})}"
                       >
                         <i class="bi bi-pencil"></i>
                       </a>
@@ -116,7 +115,7 @@
               >
                 <a
                   class="page-link"
-                  th:href="@{/index(page=${(currentPage - 1)}, keyword=${keyword})}"
+                  th:href="@{/user/index(page=${(currentPage - 1)}, keyword=${keyword})}"
                   >&laquo; Précédent</a
                 >
               </li>
@@ -127,7 +126,7 @@
               >
                 <a
                   class="page-link"
-                  th:href="@{/index(page=${status.index}, keyword=${keyword})}"
+                  th:href="@{/user/index(page=${status.index}, keyword=${keyword})}"
                   th:text="${status.index + 1}"
                 ></a>
               </li>
@@ -137,7 +136,7 @@
               >
                 <a
                   class="page-link"
-                  th:href="@{/index(page=${(currentPage + 1)}, keyword=${keyword})}"
+                  th:href="@{/user/index(page=${(currentPage + 1)}, keyword=${keyword})}"
                   >Suivant &raquo;</a
                 >
               </li>
@@ -152,7 +151,7 @@
           const name = button.getAttribute("data-name");
 
           if (confirm(`Êtes-vous sûr de vouloir supprimer le patient "${name}" ?`)) {
-            window.location.href = `/delete?id=${id}`;
+            window.location.href = `/admin/delete?id=${id}`;
           }
         }
       </script>
