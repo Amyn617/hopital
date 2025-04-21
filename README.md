@@ -116,7 +116,12 @@ La fonctionnalité de suppression inclut :
 
 # 🔧 Partie 2: Templates et Validation
 
+![image](https://github.com/user-attachments/assets/86a6c3ae-b2f3-4f00-8fd4-386e3a2ef3ab)
+
+
 ## 📝 Création du Template Layout
+
+![image](https://github.com/user-attachments/assets/49c82cc9-1795-4446-a437-7fdd491149da)
 
 Un template global a été créé pour maintenir une cohérence visuelle à travers l'application :
 
@@ -127,6 +132,8 @@ Un template global a été créé pour maintenir une cohérence visuelle à trav
 
 ## ✅ Validation des Formulaires
 
+![image](https://github.com/user-attachments/assets/89806dfa-fd16-49cd-b3b7-eb2ae35f4bf4)
+
 ### 🔒 Validation Côté Serveur
 
 Les données patient sont validées avec Jakarta Validation :
@@ -135,37 +142,6 @@ Les données patient sont validées avec Jakarta Validation :
 - 📅 Date de naissance : obligatoire, date passée
 - 📊 Score : minimum 100
 - 🏥 Statut santé : booléen
-
-### 💡 Retour Utilisateur
-
-- ⚠️ Messages d'erreur personnalisés
-- 🎯 Indication visuelle des champs invalides
-- 💾 Conservation des données en cas d'erreur
-
-## 🔍 Fonctionnalités Détaillées
-
-### 👥 Gestion des Patients
-
-- 📋 Liste paginée avec recherche dynamique
-- 📝 Formulaire de création/modification avec validation
-- 🗑️ Confirmation de suppression
-- 🏥 Indicateurs visuels de l'état de santé
-- 📊 Barre de progression pour les scores
-
-### 🎨 Navigation et Interface
-
-- 📱 Barre de navigation responsive
-- 📑 Menu déroulant pour les actions
-- 📄 Pagination avec contrôles intuitifs
-- 💬 Messages de feedback utilisateur
-- 🎯 Design moderne avec Bootstrap 5
-
-### 🔒 Sécurité et Validation
-
-- ✅ Validation des entrées côté serveur
-- ⚠️ Messages d'erreur personnalisés
-- 🛡️ Protection contre les données invalides
-- 🔔 Confirmation des actions critiques
 
 ## 📁 Structure du Projet
 
