@@ -49,4 +49,9 @@ public class HopitalApplication implements CommandLineRunner {
         );
     }
 
+    @Bean
+    PasswordEncoder passwordEncoder(){
+        return new BCryptPasswordEncoder();
+    }
+
 }
